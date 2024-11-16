@@ -1,0 +1,20 @@
+#+title: nRF54L15DK power test
+
+Multi-Image build for the nRF54Lxx testing minimal current consumption.
+
+* Build / Run
+** Prerequisites
+Based on Nordic connect SDK (Zephyr) 2.0.8
+** Build
+use ~west~ to build and flash the project
+~west build -p -o=-j0 -b nrf54l15dk/nrf54l15/cpuflpr --sysbuild -- -DSB_CONFIG_VPR_LAUNCHER=n~
+** Build with ~make~
+for Linux/MacOS systems, one can find a Makefile for building / flashing. Based on the framework location and version, the paths in the Makefile have to be changed.
+- ~make build flash~ will build and flash the firmware
+
+* Results
+** Minimal: UART / Logging / Printing deactivated
+#+ATTR_HTML: :width 800px
+[[./assets/img/ppk2_screenshot.png]]
+Uarts deactivated on both cores, but the MCU usess still around 1mA 🥹
+
